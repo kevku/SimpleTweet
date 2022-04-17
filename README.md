@@ -39,7 +39,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+The only challenge I had was understanding where to place the Java file of the TimeFormatter because it was not specific in 
+which file to add in AndroidStudio.
 
 ## Open-source libraries used
 
