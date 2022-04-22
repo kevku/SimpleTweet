@@ -40,8 +40,9 @@ class ComposeActivity : AppCompatActivity() {
             var currWord: Int = 0
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 // Fires right as the text is being changed (even supplies the range of text)
-                cptvWordcount.setText((s.length).toString() + " out of 280 words")
+                cptvWordcount.setText((maxWord - s.length).toString() + " Characters left")
                 if (s.length > 280) {
+                    cptvWordcount.setText("Exceeded 280 Characters: "+ s.length)
                     cptvWordcount.setTextColor(Color.RED)
                 }
                 else {
@@ -51,8 +52,9 @@ class ComposeActivity : AppCompatActivity() {
 
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
                 // Fires right before text is changing
-                cptvWordcount.setText("Max 280 characters")
+                cptvWordcount.setText((maxWord - s.length).toString() + " Characters left")
                 if (s.length > 280) {
+                    cptvWordcount.setText("Exceeded 280 Characters: "+ s.length)
                     cptvWordcount.setTextColor(Color.RED)
                 }
                 else {
@@ -62,7 +64,14 @@ class ComposeActivity : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable) {
                 // Fires right after the text has changed
-                cptvWordcount.setText((s.length).toString() + " out of 280 words")
+                cptvWordcount.setText((maxWord - s.length).toString() + " Characters left")
+                if (s.length > 280) {
+                    cptvWordcount.setText("Exceeded 280 Characters: "+ s.length)
+                    cptvWordcount.setTextColor(Color.RED)
+                }
+                else {
+                    cptvWordcount.setTextColor(Color.BLACK)
+                }
             }
         })
 
